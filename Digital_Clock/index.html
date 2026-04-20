@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock - Tailwind</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              mono: ['Courier New', 'monospace'],
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="min-h-screen flex items-center justify-center p-8 bg-gradient-to-br from-orange-500 via-purple-600 to-orange-900 animate-pulse bg-[length:400%_400%] relative overflow-hidden">
+        <div class="text-center backdrop-blur-xl bg-white/10 rounded-2xl p-6 md:p-10 shadow-2xl border border-white/20 min-w-[250px] glass-effect">
+            <div class="text-5xl md:text-7xl md:tracking-[0.75em] font-bold font-mono text-white drop-shadow-2xl [filter:drop-shadow(0_0_20px_#0ff)_drop-shadow(0_0_40px_#0ff)] mb-3 tracking-[0.4em] [text-shadow:0_0_10px_rgba(0,255,255,0.5)]" id="time">00:00:00</div>
+            <div class="text-xl md:text-2xl text-white/90 font-light tracking-wide capitalize" id="date"></div>
+        </div>
+
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

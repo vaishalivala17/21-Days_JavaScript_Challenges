@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body .min-h-screen {
+  background: linear-gradient(45deg, #0a0f2b, #1a237e, #0a0f2b) !important;
+  background-size: 400% 400% !important;
+  animation: gradientShift 20s ease infinite !important;
+}
+
+@keyframes glow {
+  0% {
+    filter: drop-shadow(0 0 5px #0ff) drop-shadow(0 0 10px #0ff);
+  }
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glow-animation {
+  animation: none;
+}
+
+@media (max-width: 768px) {
+  [class*="text-"]#time {
+    font-size: 3rem !important;
+    letter-spacing: 0.25em !important;
+  }
+  
+  .glass-effect {
+    padding: 2rem 2.5rem !important;
+  }
+}
