@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Toggle - Day 2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+      }
+    </script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300 p-8 font-sans">
+    <div class="max-w-4xl mx-auto">
+        <header class="mb-12 flex justify-between items-center">
+            <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100">
+                Theme Toggle
+            </h1>
+            <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" id="theme-toggle" class="sr-only peer">
+                <div class="w-16 h-8 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Toggle Dark Mode</span>
+            </label>
+        </header>
+        <main>
+            <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow-xl">
+                <h2 class="text-2xl font-semibold text-center mb-4">Welcome to Day 2 Challenge!</h2>
+                <p class="text-lg leading-relaxed mb-6">
+                    This is a demo page that changes between light and dark mode. Toggle the switch above and refresh the page - your preference is saved in localStorage!
+                </p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="p-6 bg-white dark:bg-gray-700 rounded-xl shadow-md">
+                        <h3 class="font-bold text-xl mb-3">Light Mode</h3>
+                        <p>Bright backgrounds, dark text.</p>
+                    </div>
+                    <div class="p-6 bg-gray-100 dark:bg-slate-600 rounded-xl shadow-md">
+                        <h3 class="font-bold text-xl mb-3">Dark Mode</h3>
+                        <p>Dark backgrounds, light text.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
