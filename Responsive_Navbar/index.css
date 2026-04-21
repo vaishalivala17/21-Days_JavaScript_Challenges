@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+
+* {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    font-weight: 600;
+}
+
+.navbar {
+    background: linear-gradient(135deg, #3f2b86, #441ba1) !important;
+    box-shadow: 0 4px 20px rgba(47, 11, 82, 0.4);
+}
+
+.navbar-brand {
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.navbar-toggler {
+    border: none;
+    padding: 4px 8px;
+}
+
+.toggler-icon {
+    font-size: 1.4rem;
+    transition: transform 0.3s ease;
+}
+
+.navbar-toggler[aria-expanded="true"] .fa-bars {
+    display: none;
+}
+
+.navbar-toggler[aria-expanded="true"] .fa-times {
+    display: inline-block;
+}
+
+.nav-link {
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    padding: 8px 16px !important;
+    margin: 0 4px;
+}
+
+.nav-link:hover {
+    background: rgba(255,255,255,0.25) !important;
+    color: #fff !important;
+    transform: translateY(-2px) scale(1.05);
+    font-weight: 800;
+}
+
+body {
+    padding-top: 80px;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+@media (max-width: 991.98px) {
+    body {
+        padding-top: 75px;
+    }
+    
+    .navbar-collapse {
+        background: linear-gradient(135deg, #6f42c1, #8b5cf6);
+        border-radius: 10px;
+        margin-top: 10px;
+        padding: 20px;
+        box-shadow: 0 8px 25px rgba(111,66,193,0.4);
+    }
+    
+    .nav-link {
+        display: block;
+        font-size: 1.1rem;
+        margin: 8px 0 !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .navbar-toggler[aria-expanded="true"] .fa-times {
+        display: none;
+    }
+}
+
