@@ -1,48 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Theme Toggle - Day 2</title>
+    <title>Theme Toggle - Day 2 Challenge</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-      tailwind.config = {
-        darkMode: 'class',
-      }
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {}
+            }
+        }
     </script>
     <link rel="stylesheet" href="index.css">
 </head>
-<body class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300 p-8 font-sans">
-    <div class="max-w-4xl mx-auto">
-        <header class="mb-12 flex justify-between items-center">
-            <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100">
-                Theme Toggle
-            </h1>
-            <label class="relative inline-flex items-center cursor-pointer">
-                <input type="checkbox" id="theme-toggle" class="sr-only peer">
-                <div class="w-16 h-8 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-                <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Toggle Dark Mode</span>
-            </label>
-        </header>
-        <main>
-            <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow-xl">
-                <h2 class="text-2xl font-semibold text-center mb-4">Welcome to Day 2 Challenge!</h2>
-                <p class="text-lg leading-relaxed mb-6">
-                    This is a demo page that changes between light and dark mode. Toggle the switch above and refresh the page - your preference is saved in localStorage!
-                </p>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="p-6 bg-white dark:bg-gray-700 rounded-xl shadow-md">
-                        <h3 class="font-bold text-xl mb-3">Light Mode</h3>
-                        <p>Bright backgrounds, dark text.</p>
-                    </div>
-                    <div class="p-6 bg-gray-100 dark:bg-slate-600 rounded-xl shadow-md">
-                        <h3 class="font-bold text-xl mb-3">Dark Mode</h3>
-                        <p>Dark backgrounds, light text.</p>
-                    </div>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-slate-900 min-h-screen font-sans antialiased">
+    <!-- Navbar -->
+    <nav class="navbar bg-white/80 dark:bg-slate-800/80 backdrop-blur-md sticky top-0 z-50 shadow-lg border-b border-gray-200 dark:border-slate-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-2xl font-bold text-gray-900 dark:bg-gradient-to-r dark:from-indigo-400 dark:via-purple-400 dark:to-pink-400 dark:bg-clip-text dark:text-transparent">
+                    🌙 Theme Toggle
+                </div>
+                <div class="hidden md:flex space-x-4">
+                    <a href="#" class="text-gray-700 hover:text-gray-900 dark:text-slate-300 dark:hover:text-slate-100 px-3 py-2 rounded-md text-sm font-medium transition-all">Home</a>
+                    <a href="#" class="text-gray-700 hover:text-gray-900 dark:text-slate-300 dark:hover:text-slate-100 px-3 py-2 rounded-md text-sm font-medium transition-all">About</a>
                 </div>
             </div>
-        </main>
-    </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="text-center mb-20">
+            <h1 class="text-5xl md:text-7xl font-black bg-gradient-to-r from-gray-800 via-gray-900 to-slate-900 bg-clip-text text-transparent dark:from-indigo-400 dark:via-purple-400 dark:to-pink-400 mb-6">
+                Beautiful Theme
+                <span class="block text-3xl md:text-4xl font-light text-gray-500 dark:text-slate-400 mt-4">Toggle Experience</span>
+            </h1>
+            <p class="text-xl text-gray-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed mb-12">
+                Switch between light and dark modes with smooth animations.
+            </p>
+            
+            <!-- Toggle -->
+            <div class="theme-toggle inline-block p-4 bg-white/50 dark:bg-slate-800/50 backdrop-blur-md rounded-2xl shadow-xl border border-gray-200 dark:border-slate-700">
+                <input type="checkbox" id="theme-toggle" class="peer">
+                <label for="theme-toggle" class="toggle-slider cursor-pointer block">
+                </label>
+            </div>
+        </div>
+    </main>
+
     <script src="index.js"></script>
 </body>
 </html>

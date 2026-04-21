@@ -1,7 +1,63 @@
-body {
-  font-feature-settings: 'rlig' 1, 'calt' 1;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 html {
-  transition: color 0.3s ease, background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Toggle switch styles */
+.theme-toggle {
+  position: relative;
+}
+
+.theme-toggle input[type="checkbox"] {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.theme-toggle .toggle-slider {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  background-color: #cbd5e1; /* light gray */
+  border-radius: 34px;
+  cursor: pointer;
+  transition: 0.4s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.theme-toggle .toggle-slider.dark {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+}
+
+.theme-toggle .toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.theme-toggle input:checked + .toggle-slider:before {
+  transform: translateX(26px);
+}
+
+.navbar {
+  backdrop-filter: blur(10px);
+}
+
+.footer {
+  backdrop-filter: blur(10px);
 }
