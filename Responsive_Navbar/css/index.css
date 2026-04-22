@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
 
-* {
+body {
     font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif !important;
     font-weight: 600;
 }
@@ -27,14 +27,6 @@
     transition: transform 0.3s ease;
 }
 
-.navbar-toggler[aria-expanded="true"] .fa-bars {
-    display: none;
-}
-
-.navbar-toggler[aria-expanded="true"] .fa-times {
-    display: inline-block;
-}
-
 .nav-link {
     transition: all 0.3s ease;
     border-radius: 6px;
@@ -52,8 +44,6 @@
 body {
     padding-top: 80px;
     scroll-behavior: smooth;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
 }
 
 @media (max-width: 991.98px) {
@@ -75,10 +65,3 @@ body {
         margin: 8px 0 !important;
     }
 }
-
-@media (min-width: 992px) {
-    .navbar-toggler[aria-expanded="true"] .fa-times {
-        display: none;
-    }
-}
-
