@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const filterBtns = document.querySelectorAll('[data-filter]');
     const rewardToast = document.getElementById('rewardToast');
 
-    // Profile DOM
+    // Profile 
     const elLevel = document.getElementById('level');
     const elXP = document.getElementById('xp');
     const elCoins = document.getElementById('coins');
@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const elRewardCoin = document.getElementById('rewardCoin');
     const userNameDisplay = document.getElementById('userNameDisplay');
 
-    // ===== State =====
     let tasks = [];
     let profile = { totalXP: 0, level: 1, coins: 0, tasksCompleted: 0 };
     let editingId = null;
@@ -39,12 +38,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const XP_PER_LEVEL = 100;
 
-    // ===== Initialization =====
     loadData();
     renderTasks();
     updateProfileUI();
 
-    // ===== Username Editing =====
     let originalUserName = 'User Name';
 
     // Load saved username
@@ -60,7 +57,6 @@ document.addEventListener('DOMContentLoaded', function () {
         userNameDisplay.classList.add('editing');
         userNameDisplay.focus();
 
-        // Select all text
         const range = document.createRange();
         range.selectNodeContents(userNameDisplay);
         const sel = window.getSelection();
@@ -303,7 +299,7 @@ document.addEventListener('DOMContentLoaded', function () {
             profile.tasksCompleted = Math.max(0, profile.tasksCompleted - 1);
         }
 
-        // Recalculate level
+        // Recalculate levels
         profile.level = Math.floor(profile.totalXP / XP_PER_LEVEL) + 1;
 
         saveData();
@@ -398,7 +394,6 @@ document.addEventListener('DOMContentLoaded', function () {
         return div.innerHTML;
     }
 
-    // ===== Data Persistence =====
     function saveData() {
         localStorage.setItem('xpTracker_tasks', JSON.stringify(tasks));
         localStorage.setItem('xpTracker_profile', JSON.stringify(profile));
