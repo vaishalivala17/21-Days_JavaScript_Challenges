@@ -1,0 +1,79 @@
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #30323a 0%, #564a63 100%);
+}
+.bg-todo {
+    background-color: #564a63;
+}
+.btn.bg-todo {
+    background-color: #564a63;
+}
+.card {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.card-header {
+    border-bottom: none;
+}
+
+/* Task List Items */
+.list-group-item {
+    border-left: none;
+    border-right: none;
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+}
+
+.list-group-item:first-child {
+    border-top: none;
+}
+
+.list-group-item:hover {
+    background-color: #f8f9fa;
+}
+
+.task-text {
+    flex: 1;
+    margin: 0;
+    font-size: 1.1rem;
+    word-break: break-word;
+}
+
+.btn-delete {
+    opacity: 0.7;
+    transition: all 0.2s ease;
+}
+
+.btn-delete:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+#emptyState {
+    display: none;
+}
+
+#emptyState.show {
+    display: block;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(60, 65, 73, 0.15);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.task-item {
+    animation: slideIn 0.3s ease forwards;
+}
+
