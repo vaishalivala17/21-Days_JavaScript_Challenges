@@ -8,7 +8,6 @@ function addTask() {
     
     // Validation for empty tasks
     if (taskText === '') {
-        // Shake animation for visual feedback
         taskInput.classList.add('is-invalid');
         setTimeout(() => {
             taskInput.classList.remove('is-invalid');
