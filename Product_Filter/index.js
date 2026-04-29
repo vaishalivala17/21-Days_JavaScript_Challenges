@@ -148,7 +148,7 @@ function createProductCard(product) {
                     <span class="text-2xl font-bold bg-gradient-to-r from-purple-600 to-rose-500 bg-clip-text text-transparent">$${product.price.toFixed(2)}</span>
                     <span class="text-sm text-gray-400 line-through">$${product.originalPrice.toFixed(2)}</span>
                 </div>
-                <button class="w-full mt-2 bg-gradient-to-r from-purple-600 to-rose-500 text-white py-3 rounded-xl hover:shadow-lg hover:shadow-purple-300/50 transition-all font-medium">Add to Bag</button>
+                <button class="w-full mt-2 text-white py-3 rounded-xl hover:shadow-lg transition-all font-medium">Add to Bag</button>
             </div>
         </div>
     `;
