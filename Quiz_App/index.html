@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                
+                <!-- Start Screen -->
+                <div id="startScreen" class="card-wrapper">
+                    <div class="card-header-custom">
+                        <h1> Quiz Master</h1>
+                        <p>Test your knowledge</p>
+                    </div>
+                    <div class="card-body-custom">
+                        <div class="mb-4">
+                            <label class="form-label">Select Subject</label>
+                            <div class="custom-select" id="subjectSelectWrapper">
+                                <div class="custom-select-trigger" data-select="subjectSelect">
+                                    <span>-- Choose Subject --</span>
+                                    <span class="custom-select-arrow">▼</span>
+                                </div>
+                                <div class="custom-select-dropdown">
+                                    <div class="custom-select-option" data-value="">-- Choose Subject --</div>
+                                    <div class="custom-select-option" data-value="9">General Knowledge</div>
+                                    <div class="custom-select-option" data-value="17">Science & Nature</div>
+                                    <div class="custom-select-option" data-value="18">Science: Computers</div>
+                                    <div class="custom-select-option" data-value="19">Science: Mathematics</div>
+                                    <div class="custom-select-option" data-value="21">Sports</div>
+                                    <div class="custom-select-option" data-value="22">Geography</div>
+                                    <div class="custom-select-option" data-value="23">History</div>
+                                    <div class="custom-select-option" data-value="27">Animals</div>
+                                </div>
+                            </div>
+                            <select id="subjectSelect" class="d-none">
+                                <option value="">-- Choose Subject --</option>
+                                <option value="9">General Knowledge</option>
+                                <option value="17">Science & Nature</option>
+                                <option value="18">Science: Computers</option>
+                                <option value="19">Science: Mathematics</option>
+                                <option value="21">Sports</option>
+                                <option value="22">Geography</option>
+                                <option value="23">History</option>
+                                <option value="27">Animals</option>
+                            </select>
+                        </div>
+<div class="mb-4">
+                            <label class="form-label">Number of Questions</label>
+                            <div class="custom-select" id="questionCountWrapper">
+                                <div class="custom-select-trigger" data-select="questionCount">
+                                    <span>10 Questions</span>
+                                    <span class="custom-select-arrow">▼</span>
+                                </div>
+                                <div class="custom-select-dropdown">
+                                    <div class="custom-select-option" data-value="5">5 Questions</div>
+                                    <div class="custom-select-option selected" data-value="10">10 Questions</div>
+                                    <div class="custom-select-option" data-value="15">15 Questions</div>
+                                    <div class="custom-select-option" data-value="20">20 Questions</div>
+                                </div>
+                            </div>
+                            <select id="questionCount" class="d-none">
+                                <option value="5">5 Questions</option>
+                                <option value="10" selected>10 Questions</option>
+                                <option value="15">15 Questions</option>
+                                <option value="20">20 Questions</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">Time per Question</label>
+                            <div class="custom-select" id="timeLimitWrapper">
+                                <div class="custom-select-trigger" data-select="timeLimit">
+                                    <span>15 Seconds</span>
+                                    <span class="custom-select-arrow">▼</span>
+                                </div>
+                                <div class="custom-select-dropdown">
+                                    <div class="custom-select-option" data-value="5">5 Seconds</div>
+                                    <div class="custom-select-option" data-value="10">10 Seconds</div>
+                                    <div class="custom-select-option selected" data-value="15">15 Seconds</div>
+                                    <div class="custom-select-option" data-value="20">20 Seconds</div>
+                                </div>
+                            </div>
+                            <select id="timeLimit" class="d-none">
+                                <option value="5">5 Seconds</option>
+                                <option value="10">10 Seconds</option>
+                                <option value="15" selected>15 Seconds</option>
+                                <option value="20">20 Seconds</option>
+                            </select>
+                        </div>
+                        <div class="border border-black mt-5 mb-4" style="--bs-border-opacity: .25;"></div>
+                        <button id="startBtn" class="btn btn-start border w-100">Start Quiz</button>
+                    </div>
+                </div>
+
+                <div id="quizScreen" class="card-wrapper d-none">
+                    <div class="quiz-header">
+                        <div class="subject-badge" id="currentSubject">General Knowledge</div>
+                        <div class="timer-badge" id="timer">
+                            <span id="timeDisplay">15</span>s
+                        </div>
+                    </div>
+                    <div class="progress-custom">
+                        <div class="progress-bar-custom" id="progressBar"></div>
+                    </div>
+                    <div class="card-body-custom">
+                        <div class="question-info">
+                            <span>Question <span id="currentQ">1</span> of <span id="totalQ">10</span></span>
+                            <span>Score: <span id="scoreDisplay">0</span></span>
+                        </div>
+                        <h4 class="question-text" id="questionText">Question will appear here?</h4>
+                        <div class="options-container" id="optionsContainer">
+                            <!-- Options will be generated here -->
+                        </div>
+                        <button id="nextBtn" class="btn btn-next w-100 mt-3 d-none">Next Question →</button>
+                    </div>
+                </div>
+
+                <div id="resultScreen" class="card-wrapper d-none">
+                    <div class="result-header">
+                        <div class="result-icon" id="resultIcon">🏆</div>
+                        <h2>Quiz Complete!</h2>
+                    </div>
+                    <div class="card-body-custom">
+                        <div class="result-stats">
+                            <div class="stat-item">
+                                <span class="stat-value" id="finalScore">0</span>
+                                <span class="stat-label">Score</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value" id="correctAnswers">0</span>
+                                <span class="stat-label">Correct</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value" id="wrongAnswers">0</span>
+                                <span class="stat-label">Wrong</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value" id="accuracy">0%</span>
+                                <span class="stat-label">Accuracy</span>
+                            </div>
+                        </div>
+                        <div class="result-message" id="resultMessage">
+                            Great job!
+                        </div>
+                        <div class="d-flex gap-3">
+                            <button id="reviewBtn" class="btn btn-start flex-grow-1">Review Answers</button>
+                            <button id="restartBtn" class="btn btn-restart flex-grow-1">Play Again</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="reviewScreen" class="card-wrapper d-none">
+                    <div class="card-header-custom">
+                        <h2>📋 Answer Review</h2>
+                    </div>
+                    <div class="card-body-custom" id="reviewContainer">
+                        <!-- Review items will be generated here -->
+                    </div>
+                    <div class="p-3">
+                        <button id="backToResult" class="btn btn-restart w-100">Back to Results</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
