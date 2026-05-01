@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1 class="title">Password Generator</h1>
+            <p class="subtitle">Generate secure passwords instantly</p>
+            
+            <div class="password-box">
+                <input type="text" id="password" class="password-input" readonly placeholder="Click generate to create password">
+                <button id="copyBtn" class="copy-btn" title="Copy to clipboard">
+                    <svg id="copyIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v1.5a3.375 3.375 0 003.375 3.375h1.5" />
+                    </svg>
+                    <svg id="checkIcon" class="hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="strength-section">
+                <div class="strength-header">
+                    <span class="label">Password Strength</span>
+                    <span id="strengthText" class="strength-text">Generate Password</span>
+                </div>
+                <div class="strength-bar-bg">
+                    <div id="strengthBar" class="strength-bar"></div>
+                </div>
+            </div>
+            
+            <div class="length-section">
+                <div class="length-header">
+                    <span class="label">Password Length</span>
+                    <span id="lengthValue" class="length-value">12</span>
+                </div>
+                <input type="range" id="length" min="4" max="32" value="12" class="length-slider">
+            </div>
+            
+            <div class="options">
+                <label class="option-item">
+                    <span class="option-label">Include Uppercase (A-Z)</span>
+                    <input type="checkbox" id="includeUppercase" checked>
+                </label>
+                
+                <label class="option-item">
+                    <span class="option-label">Include Lowercase (a-z)</span>
+                    <input type="checkbox" id="includeLowercase" checked>
+                </label>
+                
+                <label class="option-item">
+                    <span class="option-label">Include Numbers (0-9)</span>
+                    <input type="checkbox" id="includeNumbers" checked>
+                </label>
+                
+                <label class="option-item">
+                    <span class="option-label">Include Symbols (!@#$%)</span>
+                    <input type="checkbox" id="includeSymbols" checked>
+                </label>
+            </div>
+            
+            <p id="errorMsg" class="error-msg hidden">⚠️ Please select at least one option</p>
+            
+            <button id="generate" class="generate-btn">Generate Password</button>
+        </div>
+    </div>
+    
+    <script src="./index.js"></script>
+</body>
+</html>
