@@ -63,8 +63,8 @@ copyBtn.addEventListener('click', async () => {
     
     try {
         await navigator.clipboard.writeText(password);
-        console.log(navigator.clipboard);
-
+        console.log(navigator.clipboard);   
+             
         copyIcon.classList.add('hidden');
         checkIcon.classList.remove('hidden');
         
