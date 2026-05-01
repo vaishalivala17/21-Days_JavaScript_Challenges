@@ -63,12 +63,11 @@ copyBtn.addEventListener('click', async () => {
     
     try {
         await navigator.clipboard.writeText(password);
-        
-        // Show checkmark
+        console.log(navigator.clipboard);
+
         copyIcon.classList.add('hidden');
         checkIcon.classList.remove('hidden');
         
-        // Reset after 2 seconds
         setTimeout(() => {
             copyIcon.classList.remove('hidden');
             checkIcon.classList.add('hidden');
