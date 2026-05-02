@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modal System</title>
+    <link rel="stylesheet" href="./index.css" />
+</head>
+
+<body>
+
+    <header>
+        <h1>Modal <em>&amp;</em> Popup</h1>
+        <p>Reusable component system · 4 variants</p>
+    </header>
+
+    <div class="button-grid" id="triggers">
+        <button class="btn gold" onclick="openModal('info')">ⓘ Information</button>
+        <button class="btn red" onclick="openModal('confirm')">⚠ Confirmation</button>
+        <button class="btn violet" onclick="openModal('form')">✎ Form / Input</button>
+        <button class="btn green" onclick="openModal('loading')">⟳ Loading State</button>
+    </div>
+
+    <div class="overlay" id="overlay-info" onclick="handleOverlayClick(event,'info')">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="info-title">
+            <div class="modal-stripe" style="--stripe: linear-gradient(90deg,#c8a96e,#e8c98e)"></div>
+            <button class="modal-close" onclick="closeModal('info')" aria-label="Close">✕</button>
+            <div class="modal-body">
+                <div class="modal-icon">📄</div>
+                <h2 class="modal-title" id="info-title">Release <span class="text-accent">Notes</span></h2>
+                <p class="modal-desc">
+                    Version 3.4.1 introduces redesigned modal primitives, improved focus trapping,
+                    ARIA compliance updates, and smoother spring-based entrance animations.
+                    All existing APIs remain backward compatible.
+                </p>
+                <div class="modal-divider"></div>
+                <div class="modal-actions">
+                    <button class="modal-btn" onclick="closeModal('info')">Dismiss</button>
+                    <button class="modal-btn primary"
+                        onclick="toast('Changelog opened','#c8a96e'); closeModal('info')">View Changelog</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay-confirm" onclick="handleOverlayClick(event,'confirm')">
+        <div class="modal" role="alertdialog" aria-modal="true" aria-labelledby="confirm-title">
+            <div class="modal-stripe" style="--stripe: linear-gradient(90deg,#e05c5c,#ff8a65)"></div>
+            <button class="modal-close" onclick="closeModal('confirm')" aria-label="Close">✕</button>
+            <div class="modal-body">
+                <div class="modal-icon">🗑</div>
+                <h2 class="modal-title" id="confirm-title">Delete <span class="text-danger">Project</span>?</h2>
+                <p class="modal-desc">
+                    This action is irreversible. All files, collaborators, and version history
+                    associated with <strong style="color:var(--text)">Project Alpha</strong> will be permanently erased.
+                </p>
+                <div class="modal-divider"></div>
+                <div class="modal-actions">
+                    <button class="modal-btn" onclick="closeModal('confirm')">Cancel</button>
+                    <button class="modal-btn danger"
+                        onclick="toast('Project deleted','#e05c5c'); closeModal('confirm')">Yes, Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay-form" onclick="handleOverlayClick(event,'form')">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="form-title">
+            <div class="modal-stripe" style="--stripe: linear-gradient(90deg,#7e6cff,#a78bff)"></div>
+            <button class="modal-close" onclick="closeModal('form')" aria-label="Close">✕</button>
+            <div class="modal-body">
+                <div class="modal-steps" id="step-dots">
+                    <div class="step-dot active" id="dot-0"></div>
+                    <div class="step-dot" id="dot-1"></div>
+                    <div class="step-dot" id="dot-2"></div>
+                </div>
+
+                <!-- Step 0 -->
+                <div id="step-0" class="form-step">
+                    <h2 class="modal-title" id="form-title">Create <span class="text-violet">Account</span></h2>
+                    <p class="modal-desc">Let's start with the basics.</p>
+                    <div class="modal-input-group">
+                        <label>Full name</label>
+                        <input class="modal-input" type="text" placeholder="Ada Lovelace" id="inp-name" />
+                        <label>Email address</label>
+                        <input class="modal-input" type="email" placeholder="ada@example.com" id="inp-email" />
+                    </div>
+                </div>
+
+                <!-- Step 1 -->
+                <div id="step-1" class="form-step" style="display:none">
+                    <h2 class="modal-title">Choose <span class="text-violet">Plan</span></h2>
+                    <p class="modal-desc">You can upgrade at any time.</p>
+                    <div class="modal-input-group">
+                        <label>Plan type</label>
+                        <select class="modal-input" id="inp-plan">
+                            <option value="">— Select —</option>
+                            <option>Starter · Free</option>
+                            <option>Pro · $12 / mo</option>
+                            <option>Enterprise · Custom</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div id="step-2" class="form-step" style="display:none">
+                    <h2 class="modal-title">All <span class="text-violet">Set!</span></h2>
+                    <p class="modal-desc">Your account has been configured. Welcome aboard.</p>
+                </div>
+
+                <div class="modal-divider"></div>
+                <div class="modal-actions">
+                    <button class="modal-btn" id="form-back" onclick="formStep(-1)" style="display:none">← Back</button>
+                    <button class="modal-btn" onclick="closeModal('form')">Cancel</button>
+                    <button class="modal-btn violet" id="form-next" onclick="formStep(1)">Next →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay-loading" onclick="handleOverlayClick(event,'loading')">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="loading-title">
+            <div class="modal-stripe" style="--stripe: linear-gradient(90deg,#5ce0a0,#3dd6c8)"></div>
+            <button class="modal-close" onclick="closeModal('loading')" aria-label="Close">✕</button>
+            <div class="modal-body">
+                <div class="modal-icon">⚡</div>
+                <h2 class="modal-title" id="loading-title">Deploying <span class="text-success">Build</span></h2>
+                <p class="modal-desc">Running tests, compiling assets, and pushing to production. This usually takes
+                    under 30 seconds.</p>
+                <div class="modal-progress-track">
+                    <div class="modal-progress-bar" id="prog-bar"></div>
+                </div>
+                <p class="modal-progress-label" id="prog-label">0%</p>
+                <div class="modal-divider" style="margin-top:20px"></div>
+                <div class="modal-actions">
+                    <button class="modal-btn" onclick="closeModal('loading')">Cancel</button>
+                    <button class="modal-btn" style="color:var(--success);border-color:var(--success)" id="deploy-btn"
+                        onclick="startDeploy()">Start Deploy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-stack" id="toast-stack"></div>
+
+    <footer>Click any card to trigger · Press Esc to close</footer>
+
+    <script src="./index.js"></script>
+</body>
+
+</html>
