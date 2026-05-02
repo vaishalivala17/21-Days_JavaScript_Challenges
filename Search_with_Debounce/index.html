@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search with Debounce</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 style="text-align: center; margin-bottom: 15px; font-size: 25px;">Search with Debounce</h1>
+        <p class="subtitle">API calls are delayed until the user stops typing — saving unnecessary requests.</p>
+
+        <div class="delay-ctrl">
+            <label for="delay-slider">Debounce delay</label>
+            <input type="range" id="delay-slider" min="100" max="1500" step="100" value="500">
+            <span id="delay-val">500ms</span>
+        </div>
+
+        <div class="search-box">
+            <svg class="icon-search" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.35-4.35" />
+            </svg>
+            <input type="text" id="search-input" placeholder="Type to search…" autocomplete="off">
+            <div class="spinner" id="spinner"></div>
+        </div>
+
+        <div class="status-bar">
+            <div class="dot" id="dot"></div>
+            <span id="status-text">Waiting for input</span>
+        </div>
+
+        <div class="results" id="results"></div>
+
+        <div class="debug-panel">
+            <div class="debug-title">Debounce internals</div>
+            <div class="debug-row">
+                <span>Keystrokes fired</span>
+                <span class="debug-val" id="d-keystrokes">0</span>
+            </div>
+            <div class="debug-row">
+                <span>API calls made</span>
+                <span class="debug-val" id="d-calls">0</span>
+            </div>
+            <div class="debug-row">
+                <span>Calls saved</span>
+                <span class="saved-badge" id="d-saved">0</span>
+            </div>
+            <div class="debug-row">
+                <span>Last query</span>
+                <span class="debug-val" id="d-query">—</span>
+            </div>
+            <div class="debug-row">
+                <span>Active timer</span>
+                <span class="debug-val" id="d-timer">none</span>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./index.js"></script>
+</body>
+
+</html>
