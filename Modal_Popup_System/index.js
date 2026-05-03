@@ -1,8 +1,8 @@
 document.querySelectorAll('.btn').forEach(btn => {
   btn.addEventListener('mousemove', e => {
     const r = btn.getBoundingClientRect();
-    btn.style.setProperty('--mx', ((e.clientX-r.left)/r.width*100)+'%');
-    btn.style.setProperty('--my', ((e.clientY-r.top)/r.height*100)+'%');
+    btn.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+    btn.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
   });
 });
 
@@ -10,13 +10,20 @@ function openModal(id) {
   const ov = document.getElementById('overlay-' + id);
   ov.classList.add('active');
   document.body.style.overflow = 'hidden';
-  // focus trap: focus first focusable element
   setTimeout(() => {
-    const el = ov.querySelector('input,select,button:not(.modal-close)');
-    if (el) el.focus();
+    if (id === 'form') {
+      const firstFocusable = document.querySelector('#form .modal-input, #form .modal-btn');
+      if (firstFocusable) firstFocusable.focus();
+    }
   }, 80);
   // trigger progress bar if loading modal
   if (id === 'loading') resetDeploy();
+
+  if (id === 'form') {
+    setTimeout(() => {
+      initCustomSelect(); 
+    }, 50);
+  }
 }
 
 function closeModal(id) {
@@ -39,7 +46,6 @@ function handleOverlayClick(e, id) {
   if (e.target === e.currentTarget) closeModal(id);
 }
 
-// Esc key
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     document.querySelectorAll('.overlay.active').forEach(ov => {
@@ -71,7 +77,7 @@ function formStep(dir) {
   const nextBtn = document.getElementById('form-next');
   if (currentStep === TOTAL_STEPS - 1) {
     nextBtn.textContent = 'Finish ✓';
-    nextBtn.onclick = () => { toast('Account created!','#7e6cff'); closeModal('form'); };
+    nextBtn.onclick = () => { toast('Account created!', '#7e6cff'); closeModal('form'); };
   } else {
     nextBtn.textContent = 'Next →';
     nextBtn.onclick = () => formStep(1);
@@ -82,9 +88,9 @@ function resetForm() {
   currentStep = 0;
   for (let i = 0; i < TOTAL_STEPS; i++) {
     const step = document.getElementById('step-' + i);
-    const dot  = document.getElementById('dot-' + i);
+    const dot = document.getElementById('dot-' + i);
     step.style.display = i === 0 ? '' : 'none';
-    dot.classList.remove('active','done');
+    dot.classList.remove('active', 'done');
     if (i === 0) dot.classList.add('active');
   }
   document.getElementById('form-back').style.display = 'none';
@@ -107,9 +113,9 @@ function resetDeploy() {
 }
 
 function startDeploy() {
-  const bar   = document.getElementById('prog-bar');
+  const bar = document.getElementById('prog-bar');
   const label = document.getElementById('prog-label');
-  const btn   = document.getElementById('deploy-btn');
+  const btn = document.getElementById('deploy-btn');
 
   btn.textContent = 'Running…';
   btn.onclick = null;
@@ -126,7 +132,7 @@ function startDeploy() {
       bar.style.width = '100%';
       label.textContent = '100%';
       setTimeout(() => {
-        toast('Deployment successful!','#5ce0a0');
+        toast('Deployment successful!', '#5ce0a0');
         closeModal('loading');
       }, 600);
       return;
@@ -146,4 +152,40 @@ function toast(msg, color = '#c8a96e') {
     t.classList.add('hide');
     setTimeout(() => t.remove(), 350);
   }, 3000);
+}
+
+// ===== CUSTOM SELECT DROPDOWN =====
+
+function initCustomSelect() {
+  const select = document.getElementById("plan-select");
+  if (!select || select.dataset.init) return; 
+
+  select.dataset.init = "true";
+
+  const trigger = select.querySelector(".custom-select-trigger");
+  const options = select.querySelectorAll(".custom-option");
+  const hiddenInput = document.getElementById("inp-plan");
+
+  trigger.addEventListener("click", (e) => {
+    e.stopPropagation();
+    select.classList.toggle("open");
+  });
+
+options.forEach(option => {
+  option.addEventListener("click", (e) => {
+    e.stopPropagation(); 
+
+    trigger.textContent = option.textContent;
+    options.forEach(o => o.classList.remove("selected"));
+    option.classList.add("selected");
+    hiddenInput.value = option.dataset.value;
+    select.classList.remove("open");
+  });
+});
+
+  document.addEventListener("click", (e) => {
+    if (!select.contains(e.target)) {
+      select.classList.remove("open");
+    }
+  });
 }

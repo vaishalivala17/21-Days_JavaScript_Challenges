@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,8 +30,8 @@
                 <div class="modal-icon">📄</div>
                 <h2 class="modal-title" id="info-title">Release <span class="text-accent">Notes</span></h2>
                 <p class="modal-desc">
-                    Version 3.4.1 introduces redesigned modal primitives, improved focus trapping,
-                    ARIA compliance updates, and smoother spring-based entrance animations.
+                    This Modal is introduces redesigned modal primitives, improved focus trapping,
+                    compliance updates, and smoother entrance animations.
                     All existing APIs remain backward compatible.
                 </p>
                 <div class="modal-divider"></div>
@@ -52,7 +53,7 @@
                 <h2 class="modal-title" id="confirm-title">Delete <span class="text-danger">Project</span>?</h2>
                 <p class="modal-desc">
                     This action is irreversible. All files, collaborators, and version history
-                    associated with <strong style="color:var(--text)">Project Alpha</strong> will be permanently erased.
+                    associated with <strong style="color:var(--text)">Project</strong> will be permanently erased.
                 </p>
                 <div class="modal-divider"></div>
                 <div class="modal-actions">
@@ -80,9 +81,9 @@
                     <h2 class="modal-title" id="form-title">Create <span class="text-violet">Account</span></h2>
                     <p class="modal-desc">Let's start with the basics.</p>
                     <div class="modal-input-group">
-                        <label>Full name</label>
-                        <input class="modal-input" type="text" placeholder="Ada Lovelace" id="inp-name" />
-                        <label>Email address</label>
+                        <label for="inp-name">Full name</label>
+                        <input class="modal-input" type="text" placeholder="Add your name" id="inp-name" />
+                        <label for="inp-email">Email address</label>
                         <input class="modal-input" type="email" placeholder="ada@example.com" id="inp-email" />
                     </div>
                 </div>
@@ -92,13 +93,21 @@
                     <h2 class="modal-title">Choose <span class="text-violet">Plan</span></h2>
                     <p class="modal-desc">You can upgrade at any time.</p>
                     <div class="modal-input-group">
-                        <label>Plan type</label>
-                        <select class="modal-input" id="inp-plan">
-                            <option value="">— Select —</option>
-                            <option>Starter · Free</option>
-                            <option>Pro · $12 / mo</option>
-                            <option>Enterprise · Custom</option>
-                        </select>
+                        <label for="inp-plan">Plan type</label>
+
+                        <!-- hidden input -->
+                        <input type="hidden" id="inp-plan" value="" />
+
+                        <div class="custom-select" id="plan-select">
+                            <div class="custom-select-trigger">— Select —</div>
+
+                            <div class="custom-options">
+                                <div class="custom-option" data-value="">— Select —</div>
+                                <div class="custom-option" data-value="starter">Starter · Free</div>
+                                <div class="custom-option" data-value="pro">Pro · $12 / mo</div>
+                                <div class="custom-option" data-value="enterprise">Enterprise · Custom</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
