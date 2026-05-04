@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MAISON — Shop</title>
+
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<!-- Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+<link rel="stylesheet" href="./index.css"/>
+
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="#" class="nav-logo">MAI<span>SON</span></a>
+  <ul class="nav-links">
+    <li><a href="#">New In</a></li>
+    <li><a href="#">Collections</a></li>
+    <li><a href="#">Sale</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="nav-icon-btn" onclick="toggleCart()" aria-label="Cart">
+      <i class="bi bi-bag"></i>
+      <span class="cart-badge" id="cart-badge">0</span>
+    </button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow">New Season 2026</div>
+  <h1>Curated for<br/>the <em>Bold</em></h1>
+  <p class="hero-sub">Discover pieces designed to last — ethically sourced, obsessively crafted.</p>
+</section>
+
+<div class="toolbar" id="toolbar">
+  <div class="search-wrap">
+    <i class="bi bi-search"></i>
+    <input type="text" class="search-input" placeholder="Search products…" id="search-input" oninput="applyFilters()"/>
+  </div>
+
+  <button class="filter-btn active" data-cat="all" onclick="setCat(this,'all')">All</button>
+  <button class="filter-btn" data-cat="electronics"    onclick="setCat(this,'electronics')">Electronics</button>
+  <button class="filter-btn" data-cat="jewelery"       onclick="setCat(this,'jewelery')">Jewellery</button>
+  <button class="filter-btn" data-cat="men's clothing"   onclick="setCat(this, 'men\'s clothing')">Men</button>
+  <button class="filter-btn" data-cat="women's clothing" onclick="setCat(this, 'women\'s clothing')" >Women</button>
+
+  <select class="sort-select" id="sort-select" onchange="applyFilters()">
+    <option value="default">Sort: Default</option>
+    <option value="price-asc">Price: Low → High</option>
+    <option value="price-desc">Price: High → Low</option>
+    <option value="rating">Top Rated</option>
+    <option value="name">Name A–Z</option>
+  </select>
+
+  <span class="result-count" id="result-count">— items</span>
+</div>
+
+<div class="main-wrap">
+  <div class="row g-3 g-md-4" id="product-grid">
+    <!-- Skeletons inserted by JS -->
+  </div>
+</div>
+
+<div class="cart-backdrop" id="cart-backdrop" onclick="toggleCart()"></div>
+<aside class="cart-panel" id="cart-panel" aria-label="Shopping cart">
+  <div class="cart-head">
+    <h2>Your Bag</h2>
+    <button class="cart-close" onclick="toggleCart()"><i class="bi bi-x-lg"></i></button>
+  </div>
+  <div class="cart-items" id="cart-items-list">
+    <div class="cart-empty" id="cart-empty-state">
+      <i class="bi bi-bag"></i>
+      <p>Your bag is empty</p>
+      <span>Add some products to get started</span>
+    </div>
+  </div>
+  <div class="cart-foot" id="cart-foot" style="display:none">
+    <div class="cart-summary-row"><span>Subtotal</span><span id="subtotal-val">$0.00</span></div>
+    <div class="cart-summary-row"><span>Shipping</span><span>Free</span></div>
+    <div class="cart-summary-row"><span>Tax (8%)</span><span id="tax-val">$0.00</span></div>
+    <div class="cart-total-row">
+      <span>Total</span>
+      <span id="total-val">$0.00</span>
+    </div>
+    <button class="checkout-btn" onclick="doCheckout()">Proceed to Checkout</button>
+    <button class="continue-btn" onclick="toggleCart()">Continue Shopping</button>
+  </div>
+</aside>
+
+<div class="qv-backdrop" id="qv-backdrop" onclick="closeQV(event)">
+  <div class="qv-modal" id="qv-modal">
+    <div class="qv-img-panel">
+      <button class="qv-close" onclick="closeQVBtn()"><i class="bi bi-x"></i></button>
+      <img id="qv-img" src="" alt=""/>
+    </div>
+    <div class="qv-info">
+      <div class="qv-cat" id="qv-cat"></div>
+      <h2 class="qv-title" id="qv-title"></h2>
+      <div class="qv-rating">
+        <span class="stars" id="qv-stars"></span>
+        <span class="rating-count" id="qv-rcount"></span>
+      </div>
+      <div class="qv-price" id="qv-price"></div>
+      <p class="qv-desc" id="qv-desc"></p>
+      <button class="qv-add" id="qv-add-btn" onclick="qvAddToCart()">Add to Bag</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast-wrap" id="toast-wrap"></div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="./index.js"></script>
+</body>
+</html>
