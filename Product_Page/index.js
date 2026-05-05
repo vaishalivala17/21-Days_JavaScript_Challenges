@@ -4,6 +4,7 @@ let cart = {};          // { id: { product, qty } }
 let activeCat = 'all';
 let cartOpen = false;
 let qvProduct = null;
+let qvQty = 1;
 
 async function fetchProducts() {
   showSkeletons(12);
@@ -245,6 +246,7 @@ function isWished(id) { return wishlist.has(id); }
 function openQV(id) {
   qvProduct = allProducts.find(p => p.id === id);
   if (!qvProduct) return;
+  const pid = qvProduct.id;
   document.getElementById('qv-img').src   = qvProduct.image;
   document.getElementById('qv-img').alt   = qvProduct.title;
   document.getElementById('qv-cat').textContent   = qvProduct.category;
@@ -254,9 +256,12 @@ function openQV(id) {
   document.getElementById('qv-price').textContent = `$${qvProduct.price.toFixed(2)}`;
   document.getElementById('qv-desc').textContent  = qvProduct.description;
 
+  qvQty = cart[pid] ? cart[pid].qty : 1;
+  document.getElementById('qv-qty-val').textContent = qvQty;
+
   const addBtn = document.getElementById('qv-add-btn');
-  addBtn.textContent = cart[id] ? 'Added to Bag ✓' : 'Add to Bag';
-  addBtn.style.background = cart[id] ? 'var(--sage)' : '';
+  addBtn.textContent = cart[pid] ? 'Added to Bag ✓' : 'Add to Bag';
+  addBtn.style.background = cart[pid] ? 'var(--sage)' : '';
 
   document.getElementById('qv-backdrop').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -268,11 +273,26 @@ function closeQVBtn() {
   document.getElementById('qv-backdrop').classList.remove('open');
   document.body.style.overflow = '';
 }
+function qvChangeQty(delta) {
+  qvQty = Math.max(1, qvQty + delta);
+  document.getElementById('qv-qty-val').textContent = qvQty;
+}
+
 function qvAddToCart() {
   if (!qvProduct) return;
-  addToCart(null, qvProduct.id, true);
+  const pid = qvProduct.id;
+  if (cart[pid]) {
+    cart[pid].qty += qvQty;
+  } else {
+    cart[pid] = { product: qvProduct, qty: qvQty };
+  }
+  updateCartBadge();
+  updateCartUI();
+  refreshCardBtn(pid);
+  document.getElementById('qv-qty-val').textContent = cart[pid].qty;
   document.getElementById('qv-add-btn').textContent = 'Added to Bag ✓';
   document.getElementById('qv-add-btn').style.background = 'var(--sage)';
+  toast(`Added ${qvQty > 1 ? qvQty + ' items' : 'item'} to bag`, false);
 }
 
 function showSkeletons(n) {

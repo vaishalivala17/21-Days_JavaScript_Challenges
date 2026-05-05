@@ -732,6 +732,13 @@ body::before {
   font-size: 2rem; font-weight: 900; color: var(--ink);
   margin-bottom: 16px;
 }
+
+.qv-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 0;
+}
 .qv-desc {
   font-size: .78rem; line-height: 1.8; color: var(--ink-60);
   margin-bottom: 28px;
