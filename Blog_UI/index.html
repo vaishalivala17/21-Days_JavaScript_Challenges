@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BLOG-FOLIO</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="./index.css"/>
+</head>
+<body>
+
+<!-- Marquee -->
+<div class="marquee-bar" aria-hidden="true">
+  <div class="marquee-inner" id="marquee">
+    <!-- filled by JS -->
+  </div>
+</div>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#" class="site-logo">BLOG-<span style="color: var(--rust);">FOLIO</span></a>
+    <ul class="nav-links">
+      <li><a href="#" class="active">All Posts</a></li>
+      <li><a href="#">Design</a></li>
+      <li><a href="#">Technology</a></li>
+      <li><a href="#">Culture</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+    <div class="header-actions">
+      <div class="search-box">
+        <i class="bi bi-search" style="font-size:.75rem"></i>
+        <input type="text" placeholder="Search posts…" id="search-input" oninput="filterPosts()"/>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Hero post -->
+<section class="hero-section" id="hero-section"></section>
+
+<!-- Filter strip -->
+<div class="filter-strip">
+  <span class="filter-label">Filter</span>
+  <button class="filter-pill active" onclick="setFilter(this,'all')">All</button>
+  <button class="filter-pill" onclick="setFilter(this,'Design')">Design</button>
+  <button class="filter-pill" onclick="setFilter(this,'Technology')">Technology</button>
+  <button class="filter-pill" onclick="setFilter(this,'Culture')">Culture</button>
+  <button class="filter-pill" onclick="setFilter(this,'Business')">Business</button>
+  <button class="filter-pill" onclick="setFilter(this,'Science')">Science</button>
+  <span class="post-count" id="post-count">— posts</span>
+</div>
+
+<!-- Posts grid -->
+<section class="posts-section">
+  <div class="posts-grid" id="posts-grid"></div>
+  <div class="load-more-wrap">
+    <button class="load-more-btn" id="load-more-btn" onclick="loadMore()">
+      <span class="btn-label">Load More Stories</span>
+      <i class="bi bi-arrow-down"></i>
+    </button>
+  </div>
+</section>
+
+<!-- Post modal -->
+<div class="post-modal-backdrop" id="post-modal" onclick="handleModalClick(event)">
+  <div class="post-modal" id="post-modal-inner">
+    <!-- filled by JS -->
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  © 2026 <span>BLOG-FOLIO</span> — A Thoughtful UI · Crafted with care and love by <a href="https://capable-biscuit-eda369.netlify.app/" target="_blank">Vaishali Vala</a>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="./index.js"></script>
+</body>
+</html>
