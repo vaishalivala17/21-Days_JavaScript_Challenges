@@ -1,6 +1,3 @@
-/* ════════════════════════════════
-   DATA
-════════════════════════════════ */
 const AVATAR_COLORS = ['#f5a623','#00d2b4','#c6f135','#3b82f6','#f43f5e','#a855f7'];
 
 const AUTHORS = [
@@ -20,7 +17,6 @@ const CAT_COLORS = {
   'Science':    { fg: '#5b3fa6', bg: '#f3f0fb' },
 };
 
-// Gradient backgrounds for cards (CSS gradients, no external images)
 const BG_GRADIENTS = [
   'linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%)',
   'linear-gradient(135deg,#2d1b2e 0%,#4a1942 50%,#6b2d6b 100%)',
@@ -34,7 +30,6 @@ const BG_GRADIENTS = [
   'linear-gradient(135deg,#0a200a 0%,#1a3d1a 50%,#2a5a2a 100%)',
 ];
 
-// Decorative SVG patterns for the card images
 const SVG_PATTERNS = [
   `<svg width="100%" height="100%" viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
     <defs><radialGradient id="g1" cx="30%" cy="40%"><stop offset="0%" stop-color="#c6f135" stop-opacity=".3"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs>
@@ -167,11 +162,9 @@ const ALL_POSTS = [
   },
 ];
 
-/* ════ STATE ════ */
 let activeFilter = 'all';
 let visibleCount = 6;
 
-/* ════ MARQUEE ════ */
 (function buildMarquee() {
   const items = ['Latest Stories', '·', 'Design', '·', 'Technology', '·', 'Culture', '·', 'Business', '·', 'Science', '·'];
   const doubled = [...items, ...items];
@@ -180,7 +173,6 @@ let visibleCount = 6;
   ).join('');
 })();
 
-/* ════ HERO POST ════ */
 function buildHero() {
   const p = ALL_POSTS.find(p => p.featured) || ALL_POSTS[0];
   const catStyle = CAT_COLORS[p.category] || {};
@@ -210,7 +202,6 @@ function buildHero() {
 }
 buildHero();
 
-/* ════ FILTER ════ */
 function setFilter(btn, cat) {
   activeFilter = cat;
   document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
@@ -224,7 +215,6 @@ function filterPosts() {
   renderGrid(q);
 }
 
-/* ════ RENDER GRID ════ */
 function renderGrid(search = '') {
   const filtered = ALL_POSTS.filter(p => {
     const matchCat = activeFilter === 'all' || p.category === activeFilter;
@@ -240,7 +230,6 @@ function renderGrid(search = '') {
 
   let i = 0;
   visible.forEach((p, idx) => {
-    // Insert quote card every 5 posts
     if (idx === 4) {
       grid.insertAdjacentHTML('beforeend', buildQuoteCard(idx));
     }
@@ -249,7 +238,6 @@ function renderGrid(search = '') {
     grid.insertAdjacentHTML('beforeend', buildCard(p, delay));
   });
 
-  // Load more visibility
   document.getElementById('load-more-btn').style.display =
     filtered.length > visibleCount ? 'flex' : 'none';
 }
@@ -295,7 +283,6 @@ function buildQuoteCard(idx) {
   `;
 }
 
-/* ════ LOAD MORE ════ */
 function loadMore() {
   const btn = document.getElementById('load-more-btn');
   btn.classList.add('loading');
@@ -309,7 +296,6 @@ function loadMore() {
   }, 800);
 }
 
-/* ════ POST MODAL ════ */
 function openPost(id) {
   const p = ALL_POSTS.find(p => p.id === id);
   if (!p) return;
@@ -352,5 +338,4 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closePost();
 });
 
-/* ════ INIT ════ */
 renderGrid();
