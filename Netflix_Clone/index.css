@@ -32,20 +32,13 @@ img { display: block; }
 a { text-decoration: none; }
 button { cursor: pointer; font-family: var(--font-b); }
 
-/* ── SCROLLBAR ── */
 ::-webkit-scrollbar { width: 4px; height: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
 
-/* ══════════════════════════════════════════════
-   SCREEN MANAGER
-══════════════════════════════════════════════ */
 .screen { display: none; min-height: 100vh; }
 .screen.active { display: block; }
 
-/* ══════════════════════════════════════════════
-   ① SPLASH / LOGIN SCREEN
-══════════════════════════════════════════════ */
 #screen-login {
   background: var(--black);
   display: none;
@@ -58,7 +51,6 @@ button { cursor: pointer; font-family: var(--font-b); }
 }
 #screen-login.active { display: flex; }
 
-/* Cinematic grid background */
 .login-grid {
   position: absolute; inset: 0;
   display: grid;
@@ -74,7 +66,6 @@ button { cursor: pointer; font-family: var(--font-b); }
   transition: opacity 1s;
 }
 
-/* Gradient overlay */
 .login-overlay {
   position: absolute; inset: 0;
   background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(229,9,20,.06) 0%, var(--black) 70%);
@@ -188,9 +179,6 @@ button { cursor: pointer; font-family: var(--font-b); }
 }
 .demo-btn:hover { border-color: rgba(255,255,255,.4); color: var(--white); }
 
-/* ══════════════════════════════════════════════
-   ② PROFILE SELECT SCREEN
-══════════════════════════════════════════════ */
 #screen-profiles {
   background: var(--black);
   display: none;
@@ -256,13 +244,9 @@ button { cursor: pointer; font-family: var(--font-b); }
 }
 .manage-profiles-btn:hover { border-color: var(--white); color: var(--white); }
 
-/* ══════════════════════════════════════════════
-   ③ MAIN APP SCREEN
-══════════════════════════════════════════════ */
 #screen-app { display: none; }
 #screen-app.active { display: block; }
 
-/* ── NAVBAR ── */
 .sv-nav {
   position: fixed; top: 0; left: 0; right: 0;
   z-index: 200;
@@ -324,7 +308,6 @@ button { cursor: pointer; font-family: var(--font-b); }
 .nav-caret { color: var(--muted2); font-size: .7rem; transition: transform .2s; }
 .nav-profile:hover .nav-caret { transform: rotate(180deg); }
 
-/* Search overlay */
 .search-overlay {
   position: fixed; top: 0; left: 0; right: 0; bottom: 0;
   background: rgba(6,6,6,.92);
@@ -371,7 +354,6 @@ button { cursor: pointer; font-family: var(--font-b); }
   color: var(--muted); font-size: .9rem; text-align: center;
 }
 
-/* ── HERO BANNER ── */
 .hero-banner {
   position: relative;
   height: 85vh;
@@ -394,7 +376,6 @@ button { cursor: pointer; font-family: var(--font-b); }
 }
 .hero-slide.active .hero-bg { transform: scale(1); }
 
-/* Cinematic gradient layers */
 .hero-slide::after {
   content: '';
   position: absolute; inset: 0;
@@ -450,7 +431,6 @@ button { cursor: pointer; font-family: var(--font-b); }
   color: rgba(229,229,229,.85);
   line-height: 1.7; margin-bottom: 24px;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -494,7 +474,6 @@ button { cursor: pointer; font-family: var(--font-b); }
 }
 .hero-dot.active { background: var(--red); height: 32px; }
 
-/* Age rating badge */
 .age-badge {
   position: absolute; right: 56px; bottom: 14%;
   z-index: 2;
@@ -507,7 +486,6 @@ button { cursor: pointer; font-family: var(--font-b); }
   border-radius: 3px;
 }
 
-/* ── CONTENT ROWS ── */
 .rows-container {
   background: var(--black);
   padding-bottom: 60px;
@@ -539,7 +517,6 @@ button { cursor: pointer; font-family: var(--font-b); }
 }
 .row-header:hover .see-all { opacity: 1; }
 
-/* Carousel */
 .carousel-wrap {
   position: relative;
 }
@@ -552,7 +529,6 @@ button { cursor: pointer; font-family: var(--font-b); }
 }
 .cards-track::-webkit-scrollbar { display: none; }
 
-/* Scroll arrows */
 .carousel-arrow {
   position: absolute; top: 0; bottom: 0;
   z-index: 10;
@@ -570,7 +546,6 @@ button { cursor: pointer; font-family: var(--font-b); }
 .carousel-arrow.left  { left: 0; border-radius: 0 4px 4px 0; }
 .carousel-arrow.right { right: 0; border-radius: 4px 0 0 4px; }
 
-/* ── MOVIE CARD ── */
 .movie-card {
   flex-shrink: 0;
   width: 220px;
@@ -586,7 +561,6 @@ button { cursor: pointer; font-family: var(--font-b); }
   transition: transform .3s cubic-bezier(.34,1.2,.64,1), z-index 0s 0s;
 }
 
-/* Thumbnail */
 .card-thumb {
   width: 100%;
   aspect-ratio: 16/9;
@@ -601,7 +575,6 @@ button { cursor: pointer; font-family: var(--font-b); }
 }
 .movie-card:hover .card-thumb-inner { transform: scale(1.06); }
 
-/* Number badge for trending */
 .trend-num {
   position: absolute; bottom: -8px; left: -4px;
   font-family: var(--font-d);
@@ -613,7 +586,6 @@ button { cursor: pointer; font-family: var(--font-b); }
   user-select: none;
 }
 
-/* Card hover panel */
 .card-hover-panel {
   position: absolute; left: 0; right: 0; bottom: 0;
   background: var(--card-bg);
@@ -676,14 +648,12 @@ button { cursor: pointer; font-family: var(--font-b); }
   margin-right: 4px;
 }
 
-/* ── MY LIST SECTION ── */
 .mylist-empty {
   padding: 40px 56px;
   display: flex; align-items: center; gap: 16px;
   font-size: .88rem; color: var(--muted2); font-weight: 300;
 }
 
-/* ── GENRE NAV ── */
 .genre-nav {
   display: flex; gap: 8px; overflow-x: auto;
   padding: 16px 56px 0;
@@ -704,9 +674,6 @@ button { cursor: pointer; font-family: var(--font-b); }
   color: var(--black);
 }
 
-/* ══════════════════════════════════════════════
-   MOVIE DETAIL MODAL
-══════════════════════════════════════════════ */
 .movie-modal-backdrop {
   position: fixed; inset: 0;
   background: rgba(0,0,0,.75);
@@ -834,7 +801,6 @@ button { cursor: pointer; font-family: var(--font-b); }
   color: var(--muted2); padding: 4px 12px; border-radius: 20px;
 }
 
-/* Similar row inside modal */
 .modal-similar-title {
   font-size: 1rem; font-weight: 700;
   margin: 16px 0 14px;
@@ -867,9 +833,6 @@ button { cursor: pointer; font-family: var(--font-b); }
   font-size: .68rem; color: var(--muted2);
 }
 
-/* ══════════════════════════════════════════════
-   TOAST NOTIFICATION
-══════════════════════════════════════════════ */
 .toast-container {
   position: fixed; bottom: 28px; left: 50%;
   transform: translateX(-50%);
@@ -898,9 +861,6 @@ button { cursor: pointer; font-family: var(--font-b); }
   to { opacity: 0; transform: translateY(8px) scale(.95); }
 }
 
-/* ══════════════════════════════════════════════
-   CONTINUE WATCHING ROW
-══════════════════════════════════════════════ */
 .progress-bar-track {
   position: absolute; bottom: 0; left: 0; right: 0;
   height: 3px; background: rgba(255,255,255,.2);
@@ -910,10 +870,6 @@ button { cursor: pointer; font-family: var(--font-b); }
   background: var(--red);
   border-radius: 0 2px 2px 0;
 }
-
-/* ══════════════════════════════════════════════
-   FOOTER
-══════════════════════════════════════════════ */
 .sv-footer {
   background: var(--black);
   border-top: 1px solid var(--border);
@@ -940,9 +896,7 @@ button { cursor: pointer; font-family: var(--font-b); }
   display: flex; align-items: center; justify-content: space-between;
 }
 
-/* ══════════════════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════════════════ */
+
 @media (max-width: 992px) {
   .sv-nav { padding: 0 24px; }
   .nav-links { display: none; }
@@ -959,7 +913,6 @@ button { cursor: pointer; font-family: var(--font-b); }
 @media (max-width: 640px) {
   .hero-title { font-size: 2rem; }
   .hero-content { bottom: 20%; }
-  .hero-desc { -webkit-line-clamp: 2; }
   .movie-card { width: 150px; }
   .modal-title { font-size: 1.6rem; }
   .modal-similar-grid { grid-template-columns: 1fr 1fr; }
